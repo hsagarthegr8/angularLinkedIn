@@ -1,0 +1,119 @@
+#displayPicture {
+    border-radius: 50%;
+    height:150px;
+    width: 150px;
+    float: left;
+    position:absolute;
+    left:40px;
+  top:120px;
+  border:5px ridge white;
+    
+}
+h3
+{
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+   
+}
+#titleh3{
+     color: white;
+     font-family: Palatino Linotype;
+     font-weight: bold;
+}
+    #subtitleh3{
+         font-family:Book Antiqua;
+    }
+
+#header{
+    height : 220px;
+      border:2px ridge white
+      ;
+}
+#bt{
+    color: white;
+}
+
+#bt1{
+    color: black;
+}
+
+
+#viewProfile,#experience,#education,#accomplishment{
+    background-color: black;
+    
+
+}
+
+.card-accomp-color{
+    background-color: #D3D3D3;
+}
+
+.pv-dashboard-section__subtitle {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgba(255,255,255,.7);
+    font-style: italic;
+}
+#companyLogo,#eduLogo,#uniLogo{
+    height: 100px;
+    width: 100px;
+    float:left;
+    
+}
+
+.Sans-14px-black-90\%,
+.Sans-14px-black-90\%-bold {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    font-size: 25px;
+    line-height: 20px;
+    color: rgba(0,0,0,.9);
+}
+.bottom-margin {
+    
+    margin-bottom: 24px;
+}
+.margin-top {
+    margin-top: -8px;
+}
+
+.Sans-14px-black-90\%-bold {
+    font-weight: 600;
+}
+
+.visually-hidden {
+    display: block;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+.Sans-14px-black-60\%,
+.Sans-14px-black-75\%, .Sans-14px-white-100\%, 
+.Sans-14px-white-70\% {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.pv-entity__summary-info {
+     flex: 1 0;
+    width: auto;
+    margin-left: 80px;
+    min-height: 60px;
+    overflow: hidden;
+}
+
+#pdetail{
+    margin-left : 80px
+}
+
+#cname{
+     margin-left : 120px
+}
