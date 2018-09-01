@@ -147,7 +147,7 @@
           </div>
         </div>
         <div *ngIf="userData.length">
-          <div *ngFor="let data of userData[0].profile.education">
+          <div *ngFor="let data of userData[0].profile.education.reverse()">
             <span><h4>Degree :  {{data.degreeName}} </h4></span>
             <div>
               <h3>

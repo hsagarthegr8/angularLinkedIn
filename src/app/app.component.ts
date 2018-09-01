@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Cloudinary } from '@cloudinary/angular-5.x';
 
 @Component({
   selector: 'app-root',
-  template: `<app-bio-image></app-bio-image>
+  template: `
+  <app-bio-image></app-bio-image>
               <app-experience></app-experience>
               <app-education></app-education>
               <app-certification></app-certification>
@@ -14,4 +16,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(private cloudinary: Cloudinary) {
+    console.log(cloudinary.cloudinaryInstance.image('koala')['src']);
+  }
 }
+

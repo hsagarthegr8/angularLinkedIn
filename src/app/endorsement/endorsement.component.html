@@ -1,26 +1,30 @@
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
-<div  class="alert ">
-<div id="endorsement">
-  <h3>Endorsement
-        </h3>
-  <div class="card">
-    <div id="endorsement" class="card-body">
-      <div id="endname">
-        
-        <div *ngIf="userData.length">
-          <div *ngFor="let data of userData[0].profile.endorsements">
-            <span><h4>Endorsed By : {{data.endorsedBy}} </h4></span>
-            <span><h4>Comment : {{data.comment}} </h4></span><br><hr/>
+<div class="alert ">
+  <div id="endorsement">
+
+    <div class="card">
+      <h3 class="card-header">Endorsement
+
+        <a data-toggle="collapse" href="#bodyEndorse" class="btn pull-right">
+         <span class="glyphicon glyphicon-th-list"></span>
+      </a></h3>
+      <div id="endorsement" id="bodyEndorse" class="card-body" class="collapse">
+        <div id="endname">
+          <div *ngIf="userData.length">
+            <div *ngFor="let data of userData[0].profile.endorsements">
+              <span><h4>Endorsed By : {{data.endorsedBy}} </h4></span>
+              <span><h4>Comment : {{data.comment}} </h4></span>
+              <hr/>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

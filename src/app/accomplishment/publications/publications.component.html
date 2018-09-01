@@ -7,14 +7,17 @@
 <div id="accomplishment" class="alert ">
   <div id="publication">
     <div class="card">
-      <div id="publication" class="card-body">
-        <div id="pubname">
-          <h3>Publication
+     
+          <h3 class="card-header">Publication
+              <a data-toggle="collapse" href="#bodyPublic" class="btn pull-right">
+         <span class="glyphicon glyphicon-th-list"></span>
+      </a>
             <span><a href="#myModalPubli" class="btn btn-default btn-sm" class="btn pull-right" data-toggle="modal">
           <span class="glyphicon glyphicon-plus" ></span></a>
             </span>
           </h3>
-
+ <div id="publication" id="bodyPublic" class="card-body" class="collapse">
+        <div id="pubname">
           <!-- Modal -->
           <div class="modal fade" id="myModalPubli" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -128,7 +131,7 @@
             </div>
           </div><br>
           <div *ngIf="userData.length">
-            <div *ngFor="let data of userData[0].profile.accomplishment.publications">
+            <div *ngFor="let data of userData[0].profile.accomplishment.publications.reverse()">
               <span><h4>Name :  {{data.name}}</h4></span>
               <div><span>
           <button type="button" class="btn btn-default btn-sm" class="btn pull-right" data-target="#myModaleditPubli" data-toggle="modal" (click)="updatePublication(data.publicationId)">

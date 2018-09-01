@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BioImageService } from '../Services/bio-image.service'
+import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { BioImageService } from '../Services/bio-image.service';
+import { Cloudinary } from '@cloudinary/angular-5.x';
+import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 @Component({
   selector: 'app-bio-image',
   templateUrl: './bio-image.component.html',
@@ -8,21 +10,33 @@ import { BioImageService } from '../Services/bio-image.service'
 export class BioImageComponent implements OnInit {
 
   userData = []
+  public imageURL = "../../assets/avatar.png";
   public name;
+  fileToUpload : File = null;
   public bio;
   public emailid;
   public mobile;
-
-  constructor(private bioImageService: BioImageService) { }
+  public connect = false;
+  constructor(private bioImageService: BioImageService, private cloudinary: Cloudinary, private zone: NgZone) {
+    //this.imageURL = cloudinary.cloudinaryInstance.image('koala')['src'];
+   }
 
   ngOnInit() {
     this.getBio();
+    //this.getConnect();
 
   }
   getBio(){
      this.bioImageService.getBio().subscribe(data=>this.userData.push(data[0]));
      console.log(this.userData)
   }
+
+  // getConnect(){
+  //   console.log(this.userData[0].name);
+  //   // if("dip95"==this.userData[0].userName){
+  //   //   this.connect=!this.connect;
+  //   // }
+  // }
 
   fetch() {
         this.name = this.userData[0].name;
@@ -45,6 +59,17 @@ export class BioImageComponent implements OnInit {
     this.bioImageService.updateEmail(this.emailid).subscribe(data => this.userData = data);
     this.bioImageService.updateMobile(this.mobile).subscribe(data => this.userData = data);
   }
+
+  changeImage(file : FileList){
+    this.fileToUpload = file.item(0);
+
+    var reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imageURL = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+  
 
 
 }

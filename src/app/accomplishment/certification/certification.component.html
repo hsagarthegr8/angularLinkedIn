@@ -118,7 +118,7 @@
         </div>
         <br>
         <div *ngIf="userData.length">
-          <div *ngFor="let data of userData[0].profile.accomplishment.certifications">
+          <div *ngFor="let data of userData[0].profile.accomplishment.certifications.reverse()">
             <span><h4>Name :  {{data.name}} </h4></span>
             <div>
               <span><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeCertification(data.certificateId)>
