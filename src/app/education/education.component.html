@@ -23,11 +23,12 @@
 
         </div>
         <div class="modal-body">
-          <form>
+          <form #educationForm="ngForm">
             <div class="form-group">
               <h4>
                 <label for="recipient-name" class="form-control-label">Degree Name</label>
                 <input type="text" class="form-control" name="degname1" value="" [(ngModel)]='degreeName1' #DegreeName1='ngModel' required>
+                 <div class="alert alert-danger" *ngIf="DegreeName1.touched && DegreeName1.invalid">Degree Name is required !!</div>
               </h4>
             </div>
 
@@ -36,6 +37,7 @@
                 <label for="recipient-name" class="form-control-label">University</label>
                 <input type="text" class="form-control" name="university1" value="" [(ngModel)]='universityName1' #UniversityName1='ngModel'
                   required>
+                  <div class="alert alert-danger" *ngIf="UniversityName1.touched && UniversityName1.invalid">University Name is required !!</div>
               </h4>
             </div>
 
@@ -43,6 +45,8 @@
               <h4>
                 <label for="recipient-name" class="form-control-label">Percentage</label>
                 <input type="text" class="form-control" name="per1" value="" [(ngModel)]='percentage1' #Percentage1='ngModel' required>
+                <div class="alert alert-danger" *ngIf="Percentage1.touched && Percentage1.invalid">Percentage is required !!</div>
+
               </h4>
             </div>
 
@@ -50,13 +54,14 @@
               <h4>
                 <label for="recipient-name" class="form-control-label">Year of passing</label>
                 <input type="number" class="form-control" name="yop1" value="" [(ngModel)]='yearOfPassing1' #YearOfPassing1='ngModel' required>
+                <div class="alert alert-danger" *ngIf="YearOfPassing1.touched && YearOfPassing1.invalid">Year of Passing is required !!</div>
               </h4>
             </div>
           </form>
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addEducation(DegreeName1.value,UniversityName1.value,Percentage1.value,YearOfPassing1.value)">Save</button>
+          <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addEducation(educationForm,DegreeName1.value,UniversityName1.value,Percentage1.value,YearOfPassing1.value)">Save</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
 
@@ -150,6 +155,8 @@
           <div *ngFor="let data of userData[0].profile.education.reverse()">
             <span><h4>Degree :  {{data.degreeName}} </h4></span>
             <div>
+              <span><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeEducation(data.educationId)><span class="glyphicon glyphicon-trash"> </span></button>
+              </span>
               <h3>
                 <button type="button" data-target="#myModaleditEdu" class="btn btn-default btn-sm" class="btn pull-right" data-toggle="modal"
                   (click)="updateEducation(data.educationId)">
@@ -157,8 +164,7 @@
           <span class="glyphicon glyphicon-pencil" ></span></button>
 
               </h3>
-              <span><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeEducation(data.educationId)><span class="glyphicon glyphicon-trash"> </span></button>
-              </span>
+              
             </div>
             <span><h4>University :  {{data.university}} </h4></span>
             <span><h4>Percentage :  {{data.percentage}} </h4></span>

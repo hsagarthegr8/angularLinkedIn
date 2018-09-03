@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AwardsService } from '../../Services/awards.service';
+import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-awards',
   templateUrl: './awards.component.html',
@@ -47,13 +48,18 @@ export class AwardsComponent implements OnInit {
     this.awardsService.updateAward(this.awardName, this.awardedBy, this.year, this.id).subscribe(data => this.userData = data);
   }
 
-  addAwardsDatabase(des: string, comName: string, tPeriod: string) {
+  addAwardsDatabase(forms:NgForm,des: string, comName: string, tPeriod: string) {
+    if(des == undefined || comName == undefined || tPeriod == undefined){
+      alert("Fields cannot be empty");
+      return false;
+    }
     this.awardName1 = des;
     this.awardedBy1 = comName;
     this.year1 = tPeriod;
     this.strObj = '{"name":"' + this.awardName1 + '","awardedBy":"' + this.awardedBy1 + '","year":"' + this.year1 + '"}';
     this.strObj = JSON.parse(this.strObj);
-    this.awardsService.addAward(this.strObj).subscribe(data => this.userData = data)
+    this.awardsService.addAward(this.strObj).subscribe(data => this.userData = data);
+    forms.resetForm();
   }
 
   removeAwards(id: string) {

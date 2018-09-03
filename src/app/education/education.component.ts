@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EducationService } from '../Services/education.service'
+import { EducationService } from '../Services/education.service';
+import {NgForm} from '@angular/forms'
 
 @Component({
   selector: 'app-education',
@@ -50,14 +51,19 @@ export class EducationComponent implements OnInit {
     this.educationService.updateEducation(this.degreeName, this.universityName, this.percentage, this.yearOfPassing , this.id).subscribe(data => this.userData =data);
   }
 
-  addEducation(des: string, comName: string, tPeriod: string, yop:number){
+  addEducation(forms:NgForm,des: string, comName: string, tPeriod: string, yop:number){
+     if(des == undefined || comName == undefined || tPeriod == undefined || yop == undefined){
+      alert("Fields cannot be empty");
+      return false;
+    }
     this.degreeName1 = des;
     this.universityName1 = comName;
     this.percentage1 = tPeriod;
     this.yearOfPassing1 = yop;
     this.strObj =  '{"degreeName":"' + this.degreeName1 + '","university":"' + this.universityName1 + '","percentage":"' + this.percentage1+ '","yearOfPassing":"' + this.yearOfPassing1+ '"}';
     this.strObj = JSON.parse(this.strObj);
-    this.educationService.addEducation(this.strObj).subscribe(data => this.userData =data)
+    this.educationService.addEducation(this.strObj).subscribe(data => this.userData =data);
+    forms.resetForm();
   }
 
   removeEducation(id:string){

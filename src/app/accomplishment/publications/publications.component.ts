@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicationsService } from '../../Services/publications.service'
+import{NgForm} from '@angular/forms'
 
 @Component({
   selector: 'app-publications',
@@ -53,14 +54,19 @@ export class PublicationsComponent implements OnInit {
     this.publicationService.updatePublication(this.publicationName,this.publicationTopic,this.publishedBy, this.year, this.id).subscribe(data => this.userData = data);
   }
 
-  addPublicationDatabase(des: string,topic:string, comName: string, tPeriod: string) {
+  addPublicationDatabase(forms:NgForm,des: string,topic:string, comName: string, tPeriod: string) {
+     if(des == undefined || comName == undefined || tPeriod == undefined || topic==undefined){
+      alert("Fields cannot be empty");
+      return false;
+    }
     this.publicationName1 = des;
     this.publicationTopic1=topic;
     this.publishedBy1 = comName;
     this.year1 = tPeriod;
     this.strObj = '{"name":"' + this.publicationName1 + '","topic":"' + this.publicationTopic1 + '","publishedBy":"' + this.publishedBy1 + '","year":"' + this.year1 + '"}';
     this.strObj = JSON.parse(this.strObj);
-    this.publicationService.addPublication(this.strObj).subscribe(data => this.userData = data)
+    this.publicationService.addPublication(this.strObj).subscribe(data => this.userData = data);
+    forms.resetForm();
   }
 
   removePublication(id: string) {

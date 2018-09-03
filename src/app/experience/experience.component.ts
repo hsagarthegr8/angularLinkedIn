@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ExperienceService } from '../Services/experience.service'
+import { ExperienceService } from '../Services/experience.service';
+import { NgForm } from '@angular/forms'
 @Component({
   selector: 'app-experience',
-  templateUrl:'./experience.component.html',
+  templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
@@ -24,7 +25,7 @@ export class ExperienceComponent implements OnInit {
     this.getExperience();
   }
 
-  getExperience(){
+  getExperience() {
     this.experienceService.getExperience().subscribe(data => this.userData = data);
   }
 
@@ -43,21 +44,26 @@ export class ExperienceComponent implements OnInit {
   updateExperienceDatabase(des: string, comName: string, tPeriod: string) {
     this.designation = des;
     this.companyName = comName;
-    this.timePeriod =  tPeriod;
-    this.experienceService.updateExperienceDatabase(this.designation, this.companyName, this.timePeriod, this.id).subscribe(data => this.userData =data);
+    this.timePeriod = tPeriod;
+    this.experienceService.updateExperienceDatabase(this.designation, this.companyName, this.timePeriod, this.id).subscribe(data => this.userData = data);
   }
 
-  addExpereinceDatabase(des: string, comName: string, tPeriod: string){
+  addExpereinceDatabase(form: NgForm, des: string, comName: string, tPeriod: string) {
+    if (des == undefined || comName == undefined || tPeriod == undefined) {
+      alert("Fields cannot be empty");
+      return false;
+    }
     this.designation1 = des;
     this.companyName1 = comName;
     this.timePeriod1 = tPeriod;
-    this.strObj =  '{"designation":"' + this.designation1 + '","companyName":"' + this.companyName1 + '","timePeriod":"' + this.timePeriod1+ '"}';
+    this.strObj = '{"designation":"' + this.designation1 + '","companyName":"' + this.companyName1 + '","timePeriod":"' + this.timePeriod1 + '"}';
     this.strObj = JSON.parse(this.strObj);
     this.experienceService.addExperience(this.strObj).subscribe(data => this.userData = data);
+    form.resetForm();
   }
 
-  removeExperience(id:string){
-    this.experienceService.removeExperience(id).subscribe(data => this.userData =data);
+  removeExperience(id: string) {
+    this.experienceService.removeExperience(id).subscribe(data => this.userData = data);
   }
 
 }

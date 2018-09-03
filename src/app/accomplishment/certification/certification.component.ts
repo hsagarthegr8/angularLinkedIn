@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CertificationService } from '../../Services/certification.service'
+import {NgForm} from '@angular/forms'
 @Component({
   selector: 'app-certification',
   templateUrl: './certification.component.html',
@@ -50,7 +51,11 @@ export class CertificationComponent implements OnInit {
     this.certificationService.updateCertification(this.certificationName, this.issuedBy, this.year, this.id).subscribe(data => this.userData = data);
   }
 
-  addCertificationDatabase(des: string, comName: string, tPeriod: string) {
+  addCertificationDatabase(form : NgForm,des: string, comName: string, tPeriod: string) {
+     if(des == undefined || comName == undefined || tPeriod == undefined){
+      alert("Fields cannot be empty");
+      return false;
+    }
     this.certificationName1 = des;
     this.issuedBy1 = comName;
     this.year1 = tPeriod;

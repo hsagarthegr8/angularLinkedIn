@@ -51,7 +51,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addExpereinceDatabase(Designation1.value,CompanyName1.value,TimePeriod1.value)">Save</button>
+          <button type="submit" class="btn btn-success" data-dismiss="modal"  (click)="addExpereinceDatabase(addExperience,Designation1.value,CompanyName1.value,TimePeriod1.value)">Save</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -131,14 +131,14 @@
         <!--<span class="visually-hidden">designation</span>-->
         <div *ngIf="userData.length">
           <div *ngFor="let index of userData[0].profile.experience.reverse()">
-            <span><h4>Designation :  {{index.designation}}</h4></span>
+            <span><h4>Designation :  {{index.designation}}</h4></span><span><button class="btn btn-danger btn-sm" class="btn pull-right" (click)=removeExperience(index.experienceId)><span class="glyphicon glyphicon-trash"> </span></button>
+            </span>
             <span>
           <button type="button" data-target="#myModaleditExp" class="btn btn-default btn-sm" class="btn pull-right" data-toggle="modal" (click)="updateExperience(index.experienceId)">
           <span class="glyphicon glyphicon-pencil"></span>
             </button>
             </span>&nbsp;
-            <span><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeExperience(index.experienceId)><span class="glyphicon glyphicon-trash"> </span></button>
-            </span>
+            
             <span><h4>Company :  {{index.companyName}}</h4></span>
             <span><h4>Time Period : {{index.timePeriod}}</h4></span>
             <hr/>

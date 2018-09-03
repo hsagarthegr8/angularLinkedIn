@@ -31,7 +31,7 @@
 
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form #skill="ngForm">
                     <div class="form-group">
                       <h4>
                         <label for="recipient-name" class="form-control-label">Add Skills</label>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addskillDatabase(SkillName.value)">Save</button>
+                  <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addskillDatabase(skill,SkillName.value)">Save</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 

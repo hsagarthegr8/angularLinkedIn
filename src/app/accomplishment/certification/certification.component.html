@@ -20,61 +20,9 @@
     <!--   ***********************Certification********************* -->
     <div id="certification" id="bodyCerti" class="card-body" class="collapse">
       <div id="cername">
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModalCerti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog"> -->
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header" style="padding:35px 50px;">
-
-                <h2 class="modal-title"><b>Add Certification</b>
-
-                </h2>
-
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <h4>
-                      <label for="recipient-name" class="form-control-label">Name</label>
-                      <input type="text" class="form-control" name="certiname1" value="" [(ngModel)]='certificationName1' #CertificationName1='ngModel'>
-                    </h4>
-                  </div>
-
-                  <div class="form-group">
-                    <h4>
-                      <label for="recipient-name" class="form-control-label">Issued By</label>
-                      <input type="text" class="form-control" name="issby1" value="" [(ngModel)]='issuedBy1' #IssuedBy1='ngModel'>
-                    </h4>
-                  </div>
-                  <div class="form-group">
-                    <h4>
-                      <label for="recipient-name" class="form-control-label">Year</label>
-                      <input type="number" class="form-control" name="year1" value="" [(ngModel)]='year1' #Year1='ngModel'>
-                    </h4>
-                  </div>
-                </form>
-              </div>
-
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addCertificationDatabase(CertificationName1.value,IssuedBy1.value,Year1.value)">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              </div>
-
-
-            </div>
-
-          </div>
-        </div>
-        <!-- Modal -->
         <div class="modal fade" id="myModaleditCert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
-            <!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog"> -->
+          
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header" style="padding:35px 50px;">
@@ -121,10 +69,10 @@
           <div *ngFor="let data of userData[0].profile.accomplishment.certifications.reverse()">
             <span><h4>Name :  {{data.name}} </h4></span>
             <div>
-              <span><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeCertification(data.certificateId)>
+              <span class="move-button-left"><button class="btn btn-default btn-sm" class="btn pull-right" (click)=removeCertification(data.certificateId)>
                 <span class="glyphicon glyphicon-trash"> </span>
               </button>
-              </span>
+                 </span>
 
               <span>
                         <button type="button" class="btn btn-default btn-sm" class="btn pull-right" data-target="#myModaleditCert" data-toggle="modal" (click)="updateCertification(data.certificateId)">
@@ -140,5 +88,49 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModalCerti" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+
+           <h2 class="modal-title"><b>Add Certification</b>
+
+                </h2>
+        </div>
+      <div class="modal-body">
+        <form #certificationForm="ngForm">
+                  <div class="form-group">
+                    <h4>
+                      <label for="recipient-name" class="form-control-label">Name</label>
+                      <input type="text" class="form-control" name="certiname1" value="" [(ngModel)]='certificationName1' #CertificationName1='ngModel'>
+                    </h4>
+                  </div>
+
+                  <div class="form-group">
+                    <h4>
+                      <label for="recipient-name" class="form-control-label">Issued By</label>
+                      <input type="text" class="form-control" name="issby1" value="" [(ngModel)]='issuedBy1' #IssuedBy1='ngModel'>
+                    </h4>
+                  </div>
+                  <div class="form-group">
+                    <h4>
+                      <label for="recipient-name" class="form-control-label">Year</label>
+                      <input type="number" class="form-control" name="year1" value="" [(ngModel)]='year1' #Year1='ngModel'>
+                    </h4>
+                  </div>
+                </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="addCertificationDatabase(certificationForm,CertificationName1.value,IssuedBy1.value,Year1.value)">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               </div>
+    </div>
+
   </div>
 </div>
